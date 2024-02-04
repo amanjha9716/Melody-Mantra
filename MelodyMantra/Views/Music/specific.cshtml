@@ -1,0 +1,40 @@
+﻿ @{
+    ViewData["Title"] = "Cart";
+}
+
+
+@model Album
+
+<div>
+    @{
+        var data = @Model;
+    }
+    @if (data != null)
+    {
+        <div class="container mx-auto mt-8">
+            <h2 class="text-3xl font-semibold text-center mb-4">Album Details</h2>
+
+            <div class="max-w-md mx-auto bg-white rounded-md overflow-hidden shadow-lg">
+                <img src="@Model.Image" class="w-full h-64 object-cover object-center" alt="Album Image">
+                <div class="p-4">
+                    <h3 class="text-xl font-semibold mb-2">@Model.AlbumName</h3>
+                    <p class="text-gray-700">
+                        <strong>Price:</strong> $@Model.Price<br />
+                        <strong>Release Date:</strong> @Model.ReleaseDate.ToString("MMMM dd, yyyy")<br />
+                        <strong>Genre:</strong> @Model.Genre<br />
+                        <strong>Artist Name:</strong> @Model.ArtistName
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <a href="@Url.Action("Catalog", "Album")" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Back to Catalog</a>
+            </div>
+        </div>
+    }
+    else
+    {
+        <p>No album data available.</p>
+    }
+</div>
+ 

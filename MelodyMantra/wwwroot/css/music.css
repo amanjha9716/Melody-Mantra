@@ -1,0 +1,372 @@
+﻿/* If you like this, please check my blog at codedgar.com.ve */
+@import url('https://fonts.googleapis.com/css?family=Work+Sans');
+.container-pay{
+    margin-top:30px;
+}
+
+.card {
+    background: #16181a;
+    border-radius: 14px;
+    max-width: 300px;
+    display: block;
+    margin: auto;
+    padding: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: 2px 10px 40px black;
+    z-index: 99;
+}
+
+.logo-card {
+    max-width: 50px;
+    margin-bottom: 15px;
+    margin-top: -19px;
+}
+
+label {
+    display: flex;
+    font-size: 10px;
+    color: white;
+    opacity: .4;
+}
+
+input {
+    font-family: 'Work Sans', sans-serif;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid transparent;
+    color: #dbdce0;
+    transition: border-bottom .4s;
+}
+
+    input:focus {
+        border-bottom: 1px solid #1abc9c;
+        outline: none;
+    }
+
+.cardnumber {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.name {
+    display: block;
+    font-size: 15px;
+    max-width: 200px;
+    float: left;
+    margin-bottom: 15px;
+}
+
+.toleft {
+    float: left;
+}
+
+.ccv {
+    width: 50px;
+    margin-top: -5px;
+    font-size: 15px;
+}
+
+.receipt {
+    background: #dbdce0;
+    border-radius: 4px;
+    padding: 5%;
+    padding-top: 200px;
+    max-width: 600px;
+    height:25vh;
+    display: block;
+    margin: auto;
+    margin-top: -180px;
+    z-index: -999;
+    position: relative;
+}
+
+.col {
+    width: 50%;
+    float: left;
+}
+
+.bought-item {
+    background: #f5f5f5;
+    padding: 2px;
+}
+
+.bought-items {
+    margin-top: -3px;
+}
+
+.cost {
+    color: white;
+}
+
+.seller {
+    color: white;
+}
+
+.description {
+    font-size: 13px;
+}
+
+.price {
+    font-size: 12px;
+}
+
+.comprobe {
+    text-align: center;
+}
+
+.proceed {
+    position: absolute;
+    transform: translate(300px, 10px);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #1abc9c;
+    border: none;
+    color: white;
+    transition: box-shadow .2s, transform .4s;
+    cursor: pointer;
+}
+
+    .proceed:active {
+        outline: none;
+    }
+
+    .proceed:focus {
+        outline: none;
+        box-shadow: inset 0px 0px 5px white;
+    }
+
+.sendicon {
+    filter: invert(100%);
+    padding-top: 2px;
+}
+
+@media (max-width: 600px) {
+    .proceed {
+        transform: translate(250px, 10px);
+    }
+
+    .col {
+        display: block;
+        margin: auto;
+        width: 100%;
+        text-align: center;
+    }
+}
+.container-cat{
+    padding-left:5%;
+    padding-right:2%;
+    margin:2%;
+}
+
+.sidebar {
+    position: fixed;
+    width: 2%;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: #f09fad;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    opacity: 0.4;
+}
+
+    .sidebar a {
+        color: #fff;
+        padding-right: 10px;
+        width: 80%;
+        text-decoration: none;
+        margin-bottom: 10px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+        .sidebar a img {
+            width: 30px;
+            transition: background-color 0.3s;
+            margin-right: 100%;
+        }
+
+    .sidebar:hover {
+        opacity: 1;
+    }
+
+    .sidebar a:hover {
+        background-color: #fff;
+        color: #f09fad;
+    }
+
+.catalog {
+    display: grid;
+    margin-left: 2%;
+    margin-right: 1.5%;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    padding: 20px;
+    
+}
+
+.album-card {
+    background-color: white;
+    display:flex;
+    align-items:center;
+    height:30vh;
+    width:25vw;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+    .album-card:hover {
+        transform: scale(1.05);
+    }
+
+.album-image {
+    height: 100%;
+    width:40%;
+    object-fit: cover;
+}
+
+.album-details {
+  
+    width:100%;
+    padding-top:0;
+    padding:20px;
+
+}
+
+h3, p {
+    margin: 0;
+    
+}
+p{
+    font-size:12px;
+    color:gray;
+}
+
+.open-button {
+    background-color: #f09fad;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin: 3px;
+    width: 100%;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+    .open-button:hover {
+        color: red;
+    }
+
+.buy-button {
+    background-color: #f09fad;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    margin: 3px;
+    border-radius: 5px;
+}
+
+    .buy-button:hover {
+        color: red;
+    }
+    /*//cart*/
+    .famous-genre{
+        display:flex;
+        flex-wrap:wrap;
+        margin-left:50px;
+        margin-bottom:50px;
+    }
+    .famous-genre div{
+        background-color:white;
+        width:60px;
+        height:60px;
+        border-radius:5px;
+        margin-right:30px;
+        margin-top:10px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:25px;
+    }
+        .famous-genre div:hover {
+         transform:scale(1.2);   
+        }
+.cart-no {
+    background-color: green;
+    z-index: 1;
+    color: white;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: -8px;
+    left: -10px;
+    border-radius: 5px;
+}
+.cart-no>p{
+    color:white;
+    font-size:12px;
+    font-weight:bold;
+}
+#album-section {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+}
+
+#album-image {
+    max-width: 80%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#album-name {
+    margin-top: 10px;
+    font-size: 24px;
+    color: #333;
+}
+
+#songs-section {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.song-container {
+    margin: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    width: 200px;
+}
+
+.song-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.song-name {
+    font-size: 16px;
+    color: #333;
+}

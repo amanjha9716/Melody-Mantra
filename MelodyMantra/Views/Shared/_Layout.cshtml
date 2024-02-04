@@ -1,0 +1,82 @@
+﻿@{
+    var user = ViewData["UserData"] as User;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MelodyMantra</title>
+    
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MelodyMantra.styles.css" asp-append-version="true" />
+    <link rel="icon" type="image/x-icon" href="image-removebg-preview.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/music.css" asp-append-version="true" />
+    <link href="/your-path-to-your-compiled-css-including-fontawesome/file.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/user.css" asp-append-version="true" />
+
+    <link rel="stylesheet" href="~/css/music.css" asp-append-version="true" />
+    <link rel="stylesheet" href="/css/hero.css" asp-append-version="true" />
+
+
+</head>
+<body>
+    @if (ViewBag.ShowHeader != null && ViewBag.ShowHeader)
+    {
+        <header>
+            <div class="header_row">
+                <div>
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Melody <span>Mantra</span></a>
+                </div>
+                <div class="brand-link">
+                    <a class="navbar-brand-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    <a class="navbar-brand-link" asp-area="" asp-controller="music" asp-action="catalog">Catalogue</a>
+                    <a class="navbar-brand-link" asp-area="" asp-controller="user" asp-action="login">Login</a>
+                    <a class="navbar-brand-link" asp-area="" asp-controller="user" asp-action="registration">Sign up</a>
+                </div>
+                <div class="ind-search">
+                    <input type="text" class="search" placeholder="search" />
+                    <a class="navbar-brand-link" asp-area="" asp-controller="Music" asp-action="Cart">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="cart bi bi-bag-heart-fill" viewBox="0 0 16 16">
+                            <path d="M11.5 4v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m0 6.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132" />
+                        </svg>
+                    </a>
+
+                    <div class="cart-no">
+                        <p>3</p>
+                    </div>
+                   
+                        <p>@(Context.Session.GetString("Name"))</p>
+
+                    
+                </div>
+            </div>
+        </header>
+    }
+    else{
+        <header>
+
+            <div style="display:flex; justify-content:center; align-items:center; width:100%;height:12vh;background-color:#111827">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Melody <span style="color:white" >Mantra</span></a>
+            </div>
+        </header>
+    }
+    
+    <div class="container">
+        <main role="main" >
+            @RenderBody()
+        </main>
+    </div>
+
+   
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

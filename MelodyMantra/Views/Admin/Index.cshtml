@@ -1,0 +1,142 @@
+﻿@model List<MelodyMantra.Models.Album> 
+<style>
+    .head{
+        margin-top:20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center
+    }
+    .head > p{
+        font-size:16px;
+    }
+
+    td {
+        text-align: center;
+    }
+    .btn {
+        display: inline-block;
+        padding: 8px 16px;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        border: 1px solid #3498db;
+        color: #fff;
+        width:contain;
+        margin:10px;
+        height:40px;
+        background-color: #3498db; 
+        border-radius: 4px;
+        transition: background-color 0.3s;
+    }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+    .btn-success {
+        background-color: #2ecc71;
+        border: 1px solid #27ae60;
+    }
+
+        .btn-success:hover {
+            background-color: #218c58;
+        }
+
+    .btn-info {
+        background-color: #3498db;
+        border: 1px solid #2980b9;
+    }
+
+        .btn-info:hover {
+            background-color: #2980b9;
+        }
+        .btndiv{
+            display:flex;
+            align-items:center;
+            width:50%;
+            flex-wrap:wrap;
+            justify-content:center;
+        }
+        .btn>a{
+            color:white;
+            text-decoration:none;
+        }
+        .action{
+            display:flex;
+        }
+        .delete{
+            background-color:red;
+        }
+</style>
+<div class="head">
+    <h1>Admin Dashboard</h1>
+
+    <p>Welcome @(Context.Session.GetString("UserName")) to the Admin Dashboard!</p>
+</div>
+<br />
+<hr />
+<div class="head">
+    <h2>Album Management</h2>
+    <div class="btndiv">
+        <button class="btn"><a asp-controller="admin" asp-action="create">Add New Album</a></button>
+
+    </div>
+
+<table border="1" class="table">
+    <thead>
+        <tr>
+            <th>Album Name</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>Release Date</th>
+            <th>Genre</th>
+            <th>Artist Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var album in Model)
+        {
+                Console.WriteLine(@album.Image);
+
+            <tr>
+                <td>@album.AlbumName</td>
+                <td><img src="@album.Image" alt="Album Image" width="50" height="50" /></td>
+                <td>@album.Price</td>
+                <td>@album.ReleaseDate.ToShortDateString()</td>
+                <td>@album.Genre</td>
+                <td>@album.ArtistName</td>
+                <td class="action">
+
+                        <form asp-action="Delete" asp-route-id="@album.AlbumId" method="post">
+                            <button type="submit" value="Delete" class="btn btn-danger delete" >delete</button>
+                            
+                        </form>
+
+                        <form asp-action="Edit" asp-route-id="@album.AlbumId" method="get">
+                            <button type="submit" value="Delete" class="btn btn-danger">Update</button>
+
+                        </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+</div>
+<br />
+<br />
+<hr />
+<div class="report">
+    <h2>Report for Management</h2>
+    <div class="btndiv">
+        <button class="btn">download sales report</button>
+       
+
+    </div>
+</div>
+

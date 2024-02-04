@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Cart";
+
+}
+@{
+    var user = ViewData["UserData"] as User;
+}
+
+@model List<Album>
+<div class="text-center">
+    <div class="container-cat">
+        
+        <h3>Famous genre</h3>
+        <div class="famous-genre">
+            
+            <div >🍾 </div>
+            <div>🤘</div>
+           
+            
+            <div><img height="50px" width="50px" src="https://www.svgrepo.com/show/226929/tooth-metallic.svg" /></div>
+            <div><img height="50px" width="50px" src="https://www.svgrepo.com/show/508395/hip-hop-boy.svg" /></div>
+            
+            <div>🤠</div><div>🎻</div>
+
+            <div>🔥</div><div>🎼</div>
+            <div><img height="50px" width="50px" src="https://www.svgrepo.com/show/226929/tooth-metallic.svg" /></div>
+            <div>🤠</div><div>🎻</div>
+
+   
+        </div>
+        <h3>Trending Abums</h3>
+        <h2>@(Context.Session.GetString("UserName"))</h2>
+        <div class="catalog">
+            <!-- Example for three more album cards -->
+             @foreach (var album in Model)
+            {
+            <div class="album-card">
+                <img src="~/album.jpg" alt="Album 1" class="album-image">
+                <div class="album-details">
+                    <h3>@album.AlbumName</h3>
+                    <p>@album.Genre</p>
+                    <p>@album.Price</p>
+                        <a asp-controller="music" asp-action="specific" asp-route-id="@album.AlbumId"><button class="open-button">Open</button></a>
+                    <button class="buy-button">Add to cart</button>
+                </div>
+            </div>
+            }
+        <h3>Trending Songs</h3>
+    </div>
+
+    </div>
+
+    <div class="sidebar">
+        <a href="#top">
+            <!-- Replace the placeholder path with the actual path to your top icon file -->
+            <img src="~/goTo.png" alt="Go to Top">
+        </a>
+        <a href="#cart">
+            <!-- Replace the placeholder path with the actual path to your cart icon file -->
+            <img src="~/cart.png" alt="Go to Cart">
+        </a>
+    </div>
+</div>
