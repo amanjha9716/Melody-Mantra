@@ -1,0 +1,89 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using MelodyMantra.Models
+@model List<Report>
+@{
+    int temp = 0;
+}
+<style>
+    .main_container {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+       
+        height: 100vh;
+        width:100vw;
+       
+        
+    }
+
+    .container {
+        width: 80%;
+        margin-top: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+@{
+    int total = 0;
+}
+<div class="main_container">
+    <h1>Sales Report</h1>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th class="Serial-no">Serial no</th>
+                    <th class="Date">Date</th>
+                    <th class="Album-name">Invoice Id</th>
+                    <th class="Username">Username</th>
+                    <th class="About">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var report in Model)
+                {
+                    
+                    <tr>
+                        <td>@(temp++)</td>
+                        <td>@report.date</td>
+                        <td>@report.InvoiceId</td>
+                        <td>@report.userName</td>
+                        <td>@report.amount</td>
+
+                    </tr>
+                    total =total+ @report.amount;
+                }
+                <tr>
+                    <td><strong>Total Sales</strong></td>
+                    <td colspan="3"></td>
+                   
+                    <td><strong>@total</strong></td>
+
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</div>

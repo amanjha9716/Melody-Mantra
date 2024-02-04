@@ -29,7 +29,7 @@
    
         </div>
         <h3>Trending Abums</h3>
-        <h2>@(Context.Session.GetString("UserName"))</h2>
+        <h2>@(Context.Session.GetString("userName"))</h2>
         <div class="catalog">
             <!-- Example for three more album cards -->
              @foreach (var album in Model)
@@ -41,7 +41,9 @@
                     <p>@album.Genre</p>
                     <p>@album.Price</p>
                         <a asp-controller="music" asp-action="specific" asp-route-id="@album.AlbumId"><button class="open-button">Open</button></a>
-                    <button class="buy-button">Add to cart</button>
+                        <a asp-controller="music" asp-action="AddToCart" asp-route-id="@album.AlbumId"><button class="open-button">add To Cart</button></a>
+
+
                 </div>
             </div>
             }

@@ -68,7 +68,7 @@ namespace MelodyMantra.Controllers
 
 			if (user != null)
 			{
-				HttpContext.Session.SetString("UserName", user.UserName);
+				HttpContext.Session.SetString("userName", user.UserName);
                 HttpContext.Session.SetString("Name", user.Name);
 
                 return RedirectToAction("Catalog", "Music");

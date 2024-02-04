@@ -129,6 +129,47 @@ public class AdminController : Controller
 
         return albums;
     }
+    public IActionResult SubmitReport(int amount)
+    {
+        SqlConnection con = new SqlConnection(GetConnectionString());
+        con.Open();
+        SqlCommand cmd = new SqlCommand();
+        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+        cmd.CommandText = "addInvoice";
+        cmd.Connection = con;
+        SqlParameter pr1 = new SqlParameter("@amount", amount);
+        SqlParameter pr2 = new SqlParameter("userName", HttpContext.Session.GetString("userName"));
+        cmd.Parameters.Add(pr1);
+        cmd.Parameters.Add(pr2);
+        cmd.ExecuteNonQuery();
+        return RedirectToAction("Index", "Home");
+    }
+    public IActionResult getreport()
+    {
+        SqlConnection con = new SqlConnection(GetConnectionString());
+        con.Open();
+        SqlCommand cmd = new SqlCommand();
+        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+        cmd.CommandText = "showReports";
+        cmd.Connection = con;
+        List<Report> reports = new List<Report>();
+        using(SqlDataReader reader=cmd.ExecuteReader())
+        {
+            while (reader.Read())
+            {
+                Report report = new Report
+                {
+                    amount = Convert.ToInt32(reader["amount"]),
+                    date = reader["date"].ToString(),
+                    InvoiceId = reader["InvoiceId"].ToString(),
+                    userName = reader["userName"].ToString()
+                };
+                reports.Add(report);
+            }
+            reader.Close();
+        }
+        return View(reports);
+    }
     static private string GetConnectionString()
     {
         // To avoid storing the connection string in your code,
@@ -242,5 +283,6 @@ public class AdminController : Controller
             }
         }
     }
+
     
 }
